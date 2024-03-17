@@ -192,7 +192,7 @@ class App extends Component {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                height: "100vh",
+                height: "80vh",
                 margin: 0, 
                 show: false,
                 padding: 0, 
