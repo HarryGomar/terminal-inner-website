@@ -33,7 +33,18 @@ class App extends Component {
         }
     }
 
+    componentDidMount() {
+        this.mobileMedia = window.matchMedia('(max-width: 760px)');
+        this.updateMobile = () => this.setState({ compact: this.mobileMedia.matches });
+        this.mobileMedia.addEventListener('change', this.updateMobile);
+    }
+
+    componentWillUnmount() {
+        this.mobileMedia.removeEventListener('change', this.updateMobile);
+    }
+
     state = {
+        compact: window.matchMedia('(max-width: 760px)').matches,
         loginStep: null, // 'username' or 'password'
         enteredUsername: '',
         enteredPassword: '',
@@ -192,7 +203,7 @@ class App extends Component {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                height: "88vh",
+                height: "100dvh",
                 margin: 0, 
                 show: false,
                 padding: 0, 
@@ -206,8 +217,8 @@ class App extends Component {
                     backgroundColor='black'
                     barColor='black'
                     style={{ 
-                        fontWeight: "bold", 
-                        fontSize: "1.3em", 
+                        fontWeight: this.state.compact ? "normal" : "bold", 
+                        fontSize: this.state.compact ? "16px" : "1.3em", 
                     }}
 
                     commands={{
@@ -231,7 +242,7 @@ class App extends Component {
                         'list': 'Show Available Files'
                     }}
                     
-                    msg={`
+                    msg={this.state.compact ? 'Train Access Terminal\nType help for commands.' : `
 
         ░█████╗░██╗░░██╗░█████╗░░█████╗░  ░█████╗░██╗░░██╗░█████╗░░█████╗░
         ██╔══██╗██║░░██║██╔══██╗██╔══██╗  ██╔══██╗██║░░██║██╔══██╗██╔══██╗
