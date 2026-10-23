@@ -34,7 +34,7 @@ class App extends Component {
     }
 
     componentDidMount() {
-        this.mobileMedia = window.matchMedia('(max-width: 760px)');
+        this.mobileMedia = window.matchMedia('(max-width: 1024px)');
         this.updateMobile = () => this.setState({ compact: this.mobileMedia.matches });
         this.mobileMedia.addEventListener('change', this.updateMobile);
     }
@@ -44,7 +44,7 @@ class App extends Component {
     }
 
     state = {
-        compact: window.matchMedia('(max-width: 760px)').matches,
+        compact: window.matchMedia('(max-width: 1024px)').matches,
         loginStep: null, // 'username' or 'password'
         enteredUsername: '',
         enteredPassword: '',

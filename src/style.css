@@ -257,7 +257,7 @@ to { transform: translate(0, 100vh)}
       animation: none !important;
   }
 }
-@media (max-width: 760px) {
+@media (max-width: 1024px) {
   .tv { height: 100dvh; }
   .terminal-base { width: 100% !important; height: 100dvh !important; }
   .terminal-base input { font-size: 16px !important; min-height: 44px; }
